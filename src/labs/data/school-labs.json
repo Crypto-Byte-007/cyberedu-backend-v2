@@ -1,0 +1,642 @@
+[
+  {
+    "labId": "S001",
+    "title": "Identifying a Phishing Website",
+    "difficulty": "easy",
+    "category": "phishing_basics",
+    "description": "Learn how to spot fake login pages and protect your personal information.",
+    "theoryContent": {
+      "summary": "Phishing websites are fake sites designed to steal your passwords and personal information. They often copy real websites but have suspicious URLs, spelling mistakes, and poor design.",
+      "keyPoints": [
+        "Phishing sites often imitate real brands.",
+        "URL is the strongest indicator of legitimacy.",
+        "Never enter personal info on unknown sites.",
+        "Check HTTPS but remember it does NOT guarantee safety.",
+        "Report suspicious links to your teacher or IT staff."
+      ]
+    },
+    "simulation": {
+      "aiTutorPersona": "A strict cyber instructor who guides students step-by-step.",
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Inspect the fake website's URL.",
+          "expectedAction": "Student clicks URL inspection tool.",
+          "successMessage": "Correct. The domain is misspelled.",
+          "hint": "Look for extra letters or numbers in domain names."
+        },
+        {
+          "stepNumber": 2,
+          "instruction": "Check for HTTPS validity.",
+          "expectedAction": "Student checks certificate popup.",
+          "successMessage": "Right. HTTPS is present but the certificate owner is different.",
+          "hint": "HTTPS only means encrypted, not safe."
+        },
+        {
+          "stepNumber": 3,
+          "instruction": "Identify spelling mistakes on the page.",
+          "expectedAction": "Student highlights errors.",
+          "successMessage": "Good catch. Attackers rarely perfect grammar.",
+          "hint": "Words like 'accont' or 'pasword' are common."
+        },
+        {
+          "stepNumber": 4,
+          "instruction": "Detect login button redirect.",
+          "expectedAction": "Student inspects link destination.",
+          "successMessage": "Exactly. It redirects to a suspicious external site.",
+          "hint": "Hover over the button to see where it leads."
+        },
+        {
+          "stepNumber": 5,
+          "instruction": "Decide what action to take.",
+          "expectedAction": "Student chooses: Report → Do NOT enter details.",
+          "successMessage": "Perfect. You avoided a credential theft attempt.",
+          "hint": "Never interact further with suspicious sites."
+        }
+      ]
+    },
+    "questions": [
+      { "q": "Name one clear sign of a phishing website.", "a": "Suspicious or misspelled URL." },
+      { "q": "Does HTTPS guarantee safety?", "a": "No, it only encrypts the connection." },
+      { "q": "What should you do if unsure about a website?", "a": "Report it and avoid entering credentials." },
+      { "q": "Why do phishing sites have grammar mistakes?", "a": "Attackers rush or aren't familiar with the language." },
+      { "q": "Where can you check the redirect of a login button?", "a": "By hovering and inspecting the link." }
+    ]
+  },
+  {
+    "labId": "S002",
+    "title": "Suspicious Email Recognition",
+    "difficulty": "easy",
+    "category": "email_security",
+    "description": "Learn how to identify malicious emails disguised as official communication.",
+    "theoryContent": {
+      "summary": "Attackers often send emails pretending to be teachers, banks, or known apps. Recognizing fake emails prevents malware and scams.",
+      "keyPoints": [
+        "Check sender email address carefully.",
+        "Look for urgent messages asking for login or payment.",
+        "Never download unexpected attachments.",
+        "Be cautious of grammatical errors and threats.",
+        "Verify with the sender through another channel."
+      ]
+    },
+    "simulation": {
+      "aiTutorPersona": "A strict cyber instructor who expects perfect observation.",
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Inspect the sender address.",
+          "expectedAction": "Student checks that the domain is incorrect.",
+          "successMessage": "Correct. The sender isn't from the real domain.",
+          "hint": "Compare domain spelling with the official one."
+        },
+        {
+          "stepNumber": 2,
+          "instruction": "Find suspicious wording.",
+          "expectedAction": "Student highlights urgent or threatening phrases.",
+          "successMessage": "Right. Attackers try to create panic.",
+          "hint": "Words like 'urgent', 'immediately', 'account closed'."
+        },
+        {
+          "stepNumber": 3,
+          "instruction": "Inspect the attachment.",
+          "expectedAction": "Student identifies it as an unknown .zip file.",
+          "successMessage": "Correct. Attackers often hide malware in archives.",
+          "hint": "Unexpected compressed files are red flags."
+        },
+        {
+          "stepNumber": 4,
+          "instruction": "Check the link embedded in the email.",
+          "expectedAction": "Student hovers and sees unrelated domain.",
+          "successMessage": "Good catch. The URL is clearly malicious.",
+          "hint": "If the link doesn't match the sender's domain, avoid it."
+        },
+        {
+          "stepNumber": 5,
+          "instruction": "Decide the safest action.",
+          "expectedAction": "Student selects: Report → Delete.",
+          "successMessage": "Correct. You prevented a breach.",
+          "hint": "Never interact with suspicious emails."
+        }
+      ]
+    },
+    "questions": [
+      { "q": "What is the first thing to check in an email?", "a": "Sender email address." },
+      { "q": "Why do attackers use urgent language?", "a": "To create panic and trick victims." },
+      { "q": "Should you open unexpected attachments?", "a": "Never." },
+      { "q": "How do you check a link without clicking it?", "a": "Hover to preview URL." },
+      { "q": "What is the safest action with suspicious emails?", "a": "Report and delete." }
+    ]
+  },
+  {
+    "labId": "S003",
+    "title": "Password Strength Evaluation",
+    "difficulty": "easy",
+    "category": "account_security",
+    "description": "Learn how to build strong passwords and avoid easy-to-guess patterns.",
+    "theoryContent": {
+      "summary": "Weak passwords are the #1 reason for school account breaches. Strong passwords resist guessing and brute-force attacks.",
+      "keyPoints": [
+        "Use at least 12 characters.",
+        "Mix uppercase, lowercase, numbers, and symbols.",
+        "Avoid names, birthdays, school names.",
+        "Never reuse passwords.",
+        "Use passphrases to increase security."
+      ]
+    },
+    "simulation": {
+      "aiTutorPersona": "Cyber instructor evaluating password strength.",
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Test a weak password.",
+          "expectedAction": "Student enters example: 'school123'.",
+          "successMessage": "Correct. This is easily guessable.",
+          "hint": "Think of common patterns."
+        },
+        {
+          "stepNumber": 2,
+          "instruction": "Test a strong password.",
+          "expectedAction": "Student enters a 12+ character mix.",
+          "successMessage": "Good. This is much harder to crack.",
+          "hint": "Use symbols and passphrases."
+        },
+        {
+          "stepNumber": 3,
+          "instruction": "Identify reused passwords.",
+          "expectedAction": "Student selects 'never reuse'.",
+          "successMessage": "Correct. Reuse increases vulnerability.",
+          "hint": "Breaches leak old passwords."
+        },
+        {
+          "stepNumber": 4,
+          "instruction": "Learn about passphrases.",
+          "expectedAction": "Student constructs a sentence-based password.",
+          "successMessage": "Nice. Passphrases are strong and memorable.",
+          "hint": "Combine unrelated words."
+        },
+        {
+          "stepNumber": 5,
+          "instruction": "Select the safest option.",
+          "expectedAction": "Student chooses: Use password manager.",
+          "successMessage": "Exactly. Managers prevent reuse and simplify login.",
+          "hint": "Never store passwords in notes."
+        }
+      ]
+    },
+    "questions": [
+      { "q": "How many characters should a strong password have?", "a": "At least 12." },
+      { "q": "Why avoid birthdays?", "a": "Easily guessable personal info." },
+      { "q": "What is a passphrase?", "a": "A long password made of multiple words." },
+      { "q": "Should you reuse passwords?", "a": "Never." },
+      { "q": "Who helps store complex passwords?", "a": "Password manager." }
+    ]
+  },
+  {
+    "labId": "S004",
+    "title": "Safe Social Media Practices",
+    "difficulty": "easy",
+    "category": "social_media_safety",
+    "description": "Learn how oversharing online leads to privacy issues.",
+    "theoryContent": {
+      "summary": "Social media posts can reveal your location, routines, and personal details that attackers misuse.",
+      "keyPoints": [
+        "Never post home address or school schedule.",
+        "Do not share report cards or IDs.",
+        "Avoid clicking unknown friend requests.",
+        "Strangers can gather info for scams.",
+        "Check privacy settings frequently."
+      ]
+    },
+    "simulation": {
+      "aiTutorPersona": "Strict cyber instructor reviewing online posts.",
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Review a student's oversharing profile.",
+          "expectedAction": "Student identifies sensitive info.",
+          "successMessage": "Good. That info shouldn't be public.",
+          "hint": "Check photos and captions."
+        },
+        {
+          "stepNumber": 2,
+          "instruction": "Evaluate a suspicious friend request.",
+          "expectedAction": "Student declines unknown person.",
+          "successMessage": "Correct decision.",
+          "hint": "Mutual friends don't guarantee safety."
+        },
+        {
+          "stepNumber": 3,
+          "instruction": "Identify a risky post.",
+          "expectedAction": "Student flags live location post.",
+          "successMessage": "Right. Never post your live location.",
+          "hint": "Safety first."
+        },
+        {
+          "stepNumber": 4,
+          "instruction": "Fix privacy settings.",
+          "expectedAction": "Student sets profile to private.",
+          "successMessage": "Good. Only friends should see your posts.",
+          "hint": "Public profiles attract scammers."
+        },
+        {
+          "stepNumber": 5,
+          "instruction": "Choose a safe sharing rule.",
+          "expectedAction": "Student picks: Think twice before posting.",
+          "successMessage": "Correct mindset.",
+          "hint": "Once online, always online."
+        }
+      ]
+    },
+    "questions": [
+      { "q": "Why avoid posting live location?", "a": "It reveals your whereabouts to strangers." },
+      { "q": "Should you accept unknown friend requests?", "a": "No." },
+      { "q": "What info should never be posted?", "a": "Home address, school schedule, ID cards." },
+      { "q": "What setting protects your profile?", "a": "Private account." },
+      { "q": "What rule helps avoid oversharing?", "a": "Think before posting." }
+    ]
+  },
+  {
+    "labId": "S005",
+    "title": "Basic Computer Hygiene",
+    "difficulty": "easy",
+    "category": "device_security",
+    "description": "Learn how to keep your school laptop safe.",
+    "theoryContent": {
+      "summary": "Unsafe downloads, outdated apps, and weak device settings expose your laptop to threats.",
+      "keyPoints": [
+        "Install updates regularly.",
+        "Avoid pirated software.",
+        "Use antivirus and run scans.",
+        "Lock screen when away.",
+        "Do not plug unknown USB devices."
+      ]
+    },
+    "simulation": {
+      "aiTutorPersona": "Device security instructor.",
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Inspect outdated software.",
+          "expectedAction": "Student updates system.",
+          "successMessage": "Correct. Updates fix vulnerabilities.",
+          "hint": "Outdated apps are risky."
+        },
+        {
+          "stepNumber": 2,
+          "instruction": "Identify unsafe download.",
+          "expectedAction": "Student deletes pirated .exe file.",
+          "successMessage": "Correct choice.",
+          "hint": "Free downloads often hide malware."
+        },
+        {
+          "stepNumber": 3,
+          "instruction": "Run antivirus scan.",
+          "expectedAction": "Student clicks scan button.",
+          "successMessage": "Good. Scans detect hidden threats.",
+          "hint": "Use antivirus weekly."
+        },
+        {
+          "stepNumber": 4,
+          "instruction": "Handle unknown USB device.",
+          "expectedAction": "Student rejects connection.",
+          "successMessage": "Correct. USBs can contain malware.",
+          "hint": "Never trust unknown devices."
+        },
+        {
+          "stepNumber": 5,
+          "instruction": "Lock the screen.",
+          "expectedAction": "Student presses lock shortcut.",
+          "successMessage": "Well done.",
+          "hint": "Always lock your device."
+        }
+      ]
+    },
+    "questions": [
+      { "q": "Why update apps?", "a": "To patch vulnerabilities." },
+      { "q": "Is pirated software safe?", "a": "No." },
+      { "q": "How often run antivirus?", "a": "Weekly." },
+      { "q": "Should you trust unknown USBs?", "a": "No." },
+      { "q": "Why lock the screen?", "a": "To prevent unauthorized access." }
+    ]
+  },
+  {
+    "labId": "S006",
+    "title": "Understanding Fake Giveaways",
+    "difficulty": "easy",
+    "category": "scam_detection",
+    "description": "Learn how scammers trick students with fake prizes.",
+    "theoryContent": {
+      "summary": "Giveaway scams lure students with fake rewards but steal data or install malware.",
+      "keyPoints": [
+        "Giveaways asking for card details are scams.",
+        "Social media giveaways often fake.",
+        "Never click 'You won!' popups.",
+        "Check official websites only.",
+        "Report scam links."
+      ]
+    },
+    "simulation": {
+      "aiTutorPersona": "Scam investigator instructor.",
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Inspect a giveaway popup.",
+          "expectedAction": "Student identifies pop-up as fake.",
+          "successMessage": "Correct.",
+          "hint": "Real companies don't use popups."
+        },
+        {
+          "stepNumber": 2,
+          "instruction": "Check reward conditions.",
+          "expectedAction": "Student sees they want card info.",
+          "successMessage": "Good catch.",
+          "hint": "Never give card details."
+        },
+        {
+          "stepNumber": 3,
+          "instruction": "Look at the URL.",
+          "expectedAction": "Student notices non-official domain.",
+          "successMessage": "Right.",
+          "hint": "Fake URLs imitate real ones."
+        },
+        {
+          "stepNumber": 4,
+          "instruction": "Identify suspicious timer.",
+          "expectedAction": "Student flags countdown trick.",
+          "successMessage": "Correct.",
+          "hint": "Timers create fake urgency."
+        },
+        {
+          "stepNumber": 5,
+          "instruction": "Choose safest action.",
+          "expectedAction": "Student closes and reports.",
+          "successMessage": "Good decision.",
+          "hint": "Avoid interaction."
+        }
+      ]
+    },
+    "questions": [
+      { "q": "Should you trust pop-up giveaways?", "a": "No." },
+      { "q": "Why do scammers add countdown timers?", "a": "To create urgency." },
+      { "q": "Should giveaways ask for card details?", "a": "Never." },
+      { "q": "How identify fake domains?", "a": "Misspellings or unusual endings." },
+      { "q": "Best action on scams?", "a": "Close and report." }
+    ]
+  },
+  {
+    "labId": "S007",
+    "title": "Recognizing Malware Popups",
+    "difficulty": "easy",
+    "category": "malware_awareness",
+    "description": "Learn to identify fake antivirus alerts.",
+    "theoryContent": {
+      "summary": "Fake antivirus popups try to scare you into downloading malware.",
+      "keyPoints": [
+        "Popups claiming viruses are often fake.",
+        "Do not click 'Clean Now'.",
+        "Close suspicious popups from task manager.",
+        "Keep antivirus updated.",
+        "Real antivirus won't show random website alerts."
+      ]
+    },
+    "simulation": {
+      "aiTutorPersona": "strict malware response instructor",
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Inspect fake antivirus popup.",
+          "expectedAction": "Student identifies unrealistic threat count.",
+          "successMessage": "Correct.",
+          "hint": "Fake ones exaggerate numbers."
+        },
+        {
+          "stepNumber": 2,
+          "instruction": "Check source of popup.",
+          "expectedAction": "Student notes it's from browser, not antivirus.",
+          "successMessage": "Right.",
+          "hint": "Real AV does not appear as browser popup."
+        },
+        {
+          "stepNumber": 3,
+          "instruction": "Close popup safely.",
+          "expectedAction": "Student uses task manager.",
+          "successMessage": "Safe method.",
+          "hint": "Do not click inside popup."
+        },
+        {
+          "stepNumber": 4,
+          "instruction": "Run real antivirus scan.",
+          "expectedAction": "Student runs system scan.",
+          "successMessage": "Correct next step.",
+          "hint": "Use trusted software only."
+        },
+        {
+          "stepNumber": 5,
+          "instruction": "Select final action.",
+          "expectedAction": "Student reports to IT.",
+          "successMessage": "Proper procedure.",
+          "hint": "Always report suspicious activity."
+        }
+      ]
+    },
+    "questions": [
+      { "q": "Are popups saying 'your PC is infected' real?", "a": "Usually fake." },
+      { "q": "Should you click inside suspicious popups?", "a": "No." },
+      { "q": "Where do real antivirus alerts come from?", "a": "Your installed antivirus software, not websites." },
+      { "q": "How close suspicious popups safely?", "a": "Task manager." },
+      { "q": "Should you report malware attempts?", "a": "Yes." }
+    ]
+  },
+  {
+    "labId": "S008",
+    "title": "Cyberbullying Detection",
+    "difficulty": "easy",
+    "category": "digital_wellbeing",
+    "description": "Learn to identify harmful online behavior.",
+    "theoryContent": {
+      "summary": "Cyberbullying harms emotional health. Recognizing it early allows intervention.",
+      "keyPoints": [
+        "Repeated rude messages are bullying.",
+        "Screenshots help report incidents.",
+        "Never respond angrily.",
+        "Block and report offenders.",
+        "Talk to a trusted adult."
+      ]
+    },
+    "simulation": {
+      "aiTutorPersona": "responsible digital safety instructor",
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Identify rude messages.",
+          "expectedAction": "Student highlights bullying message.",
+          "successMessage": "Correct.",
+          "hint": "Look for insults or threats."
+        },
+        {
+          "stepNumber": 2,
+          "instruction": "Capture evidence.",
+          "expectedAction": "Student takes screenshot.",
+          "successMessage": "Good move.",
+          "hint": "Evidence is important."
+        },
+        {
+          "stepNumber": 3,
+          "instruction": "Block the bully.",
+          "expectedAction": "Student blocks account.",
+          "successMessage": "Correct.",
+          "hint": "Prevent further harm."
+        },
+        {
+          "stepNumber": 4,
+          "instruction": "Report incident.",
+          "expectedAction": "Student files report.",
+          "successMessage": "Proper process.",
+          "hint": "Use platform's report tool."
+        },
+        {
+          "stepNumber": 5,
+          "instruction": "Choose safe emotional response.",
+          "expectedAction": "Student selects: Stay calm and talk to adult.",
+          "successMessage": "Correct.",
+          "hint": "Emotional safety matters."
+        }
+      ]
+    },
+    "questions": [
+      { "q": "Is one rude message bullying?", "a": "No, it must be repeated." },
+      { "q": "Should you screenshot bullying?", "a": "Yes." },
+      { "q": "What is the first safety action?", "a": "Block the bully." },
+      { "q": "Should you reply angrily?", "a": "No." },
+      { "q": "Who should you talk to?", "a": "A trusted adult." }
+    ]
+  },
+  {
+    "labId": "S009",
+    "title": "Fake App Detection",
+    "difficulty": "easy",
+    "category": "mobile_security",
+    "description": "Learn to identify untrusted apps.",
+    "theoryContent": {
+      "summary": "Fake apps steal data, track you, or show harmful ads.",
+      "keyPoints": [
+        "Check developer name.",
+        "Read reviews for warnings.",
+        "Avoid apps with few downloads.",
+        "Never sideload unknown APKs.",
+        "Permissions must be reasonable."
+      ]
+    },
+    "simulation": {
+      "aiTutorPersona": "mobile security instructor",
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Check app developer.",
+          "expectedAction": "Student identifies unknown developer.",
+          "successMessage": "Correct.",
+          "hint": "Real apps have verified developers."
+        },
+        {
+          "stepNumber": 2,
+          "instruction": "Read user reviews.",
+          "expectedAction": "Student notices negative warnings.",
+          "successMessage": "Correct.",
+          "hint": "Look for patterns."
+        },
+        {
+          "stepNumber": 3,
+          "instruction": "Check permissions.",
+          "expectedAction": "Student flags unnecessary permissions.",
+          "successMessage": "Right.",
+          "hint": "Why does calculator need location?"
+        },
+        {
+          "stepNumber": 4,
+          "instruction": "Check download count.",
+          "expectedAction": "Student identifies low downloads.",
+          "successMessage": "Good observation.",
+          "hint": "New apps are often suspicious."
+        },
+        {
+          "stepNumber": 5,
+          "instruction": "Choose action.",
+          "expectedAction": "Student avoids install.",
+          "successMessage": "Safe choice.",
+          "hint": "Better safe than sorry."
+        }
+      ]
+    },
+    "questions": [
+      { "q": "What do fake apps do?", "a": "Steal data or harm device." },
+      { "q": "Why check permissions?", "a": "To avoid unnecessary access." },
+      { "q": "Are low-download apps safe?", "a": "Not always." },
+      { "q": "Should you sideload APKs?", "a": "No." },
+      { "q": "What is a warning in reviews?", "a": "Users reporting suspicious behavior." }
+    ]
+  },
+  {
+    "labId": "S010",
+    "title": "Safe Online Gaming",
+    "difficulty": "easy",
+    "category": "gaming_security",
+    "description": "Learn how scammers target students in games.",
+    "theoryContent": {
+      "summary": "Gaming scams try to steal accounts through fake skins, cheats, or gift codes.",
+      "keyPoints": [
+        "Never share gaming passwords.",
+        "Avoid cheat downloads.",
+        "Fake skin generators steal credentials.",
+        "Strangers offering gifts are suspicious.",
+        "Enable 2FA on accounts."
+      ]
+    },
+    "simulation": {
+      "aiTutorPersona": "gaming safety instructor",
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Inspect fake skin generator.",
+          "expectedAction": "Student identifies suspicious login page.",
+          "successMessage": "Correct.",
+          "hint": "Looks similar to real site but isn't."
+        },
+        {
+          "stepNumber": 2,
+          "instruction": "Check cheat download site.",
+          "expectedAction": "Student flags malware risk.",
+          "successMessage": "Right.",
+          "hint": "Cheats often contain viruses."
+        },
+        {
+          "stepNumber": 3,
+          "instruction": "Analyze stranger message.",
+          "expectedAction": "Student marks it suspicious.",
+          "successMessage": "Correct.",
+          "hint": "Strangers promising gifts = scams."
+        },
+        {
+          "stepNumber": 4,
+          "instruction": "Enable 2FA.",
+          "expectedAction": "Student turns on two-factor authentication.",
+          "successMessage": "Strong protection.",
+          "hint": "2FA stops account theft."
+        },
+        {
+          "stepNumber": 5,
+          "instruction": "Choose safe behavior.",
+          "expectedAction": "Student avoids sharing passwords.",
+          "successMessage": "Correct.",
+          "hint": "Never share login info."
+        }
+      ]
+    },
+    "questions": [
+      { "q": "Should you share game passwords?", "a": "No." },
+      { "q": "Are cheat downloads safe?", "a": "No." },
+      { "q": "Why avoid fake skin generators?", "a": "They steal accounts." },
+      { "q": "Best defense for gaming accounts?", "a": "2FA." },
+      { "q": "Are strangers offering gifts trustworthy?", "a": "No." }
+    ]
+  }
+]

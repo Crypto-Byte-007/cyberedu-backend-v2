@@ -1,0 +1,12 @@
+import { Request } from 'express';
+import { Strategy } from 'passport-jwt';
+import { AppConfigService } from '../../config/config.service';
+declare const RefreshTokenStrategy_base: new (...args: [opt: import("passport-jwt").StrategyOptionsWithRequest] | [opt: import("passport-jwt").StrategyOptionsWithoutRequest]) => Strategy & {
+    validate(...args: any[]): unknown;
+};
+export declare class RefreshTokenStrategy extends RefreshTokenStrategy_base {
+    private configService;
+    constructor(configService: AppConfigService);
+    validate(req: Request, payload: any): any;
+}
+export {};

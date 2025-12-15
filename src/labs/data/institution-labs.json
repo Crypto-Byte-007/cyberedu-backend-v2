@@ -1,0 +1,642 @@
+[
+  {
+    "labId": "I001",
+    "title": "Advanced Phishing Attack (Credential Replay)",
+    "difficulty": "medium",
+    "category": "incident_response",
+    "description": "In advanced phishing scenarios, attackers attempt credential capture and automated credential replay. This lab teaches detection, containment, and user notification.",
+    "theoryContent": {
+      "summary": "Advanced phishing attacks involve credential harvesting followed by automated replay attempts. Detection requires log correlation and behavioral analysis.",
+      "keyPoints": [
+        "Credential replay attacks bypass simple password changes.",
+        "IP geolocation analysis reveals suspicious login patterns.",
+        "Rapid containment prevents lateral movement.",
+        "User notification is critical for awareness.",
+        "Documentation ensures compliance and learning."
+      ]
+    },
+    "simulation": {
+      "aiTutorPersona": "Senior incident response analyst guiding through complex attack investigation.",
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Analyze suspicious login attempts in logs.",
+          "expectedAction": "Student identifies abnormal login frequency and timing.",
+          "successMessage": "Correct. Multiple rapid attempts indicate automated replay.",
+          "hint": "Look for login attempts outside normal business hours."
+        },
+        {
+          "stepNumber": 2,
+          "instruction": "Identify repeated login failures after email compromise.",
+          "expectedAction": "Student correlates phishing email timestamp with failed logins.",
+          "successMessage": "Good correlation. The timing confirms credential harvesting.",
+          "hint": "Check authentication logs 30 minutes after phishing email."
+        },
+        {
+          "stepNumber": 3,
+          "instruction": "Detect credential replay patterns from abnormal IP locations.",
+          "expectedAction": "Student flags logins from foreign IP addresses.",
+          "successMessage": "Excellent. Geographic anomalies are strong indicators.",
+          "hint": "Compare current login locations with user's normal patterns."
+        },
+        {
+          "stepNumber": 4,
+          "instruction": "Apply temporary account lock and enforce password reset.",
+          "expectedAction": "Student implements immediate containment measures.",
+          "successMessage": "Proper containment. This prevents further unauthorized access.",
+          "hint": "Lock first, investigate later to minimize damage."
+        },
+        {
+          "stepNumber": 5,
+          "instruction": "Document incident and notify affected users.",
+          "expectedAction": "Student creates incident report and user notification.",
+          "successMessage": "Complete response. Documentation ensures compliance.",
+          "hint": "Include timeline, impact, and remediation steps."
+        }
+      ]
+    },
+    "questions": [
+      { "q": "What log pattern helped identify the replay attempt?", "a": "Multiple rapid login attempts from foreign IP addresses after phishing email." },
+      { "q": "How do credential replay attacks bypass MFA?", "a": "They use harvested session tokens or target accounts without MFA enabled." },
+      { "q": "What is the first containment step after detection?", "a": "Immediately lock the compromised account." },
+      { "q": "Which user actions increase susceptibility?", "a": "Clicking phishing links and entering credentials on fake sites." },
+      { "q": "What should be documented for compliance?", "a": "Timeline, affected systems, containment actions, and user notifications." }
+    ]
+  },
+  {
+    "labId": "I002",
+    "title": "Ransomware Containment & Triage",
+    "difficulty": "medium",
+    "category": "incident_response",
+    "description": "Ransomware incidents require rapid containment, network isolation, communication control, and forensic readiness.",
+    "theoryContent": {
+      "summary": "Ransomware spreads rapidly through networks. Immediate isolation and forensic preservation are critical for recovery and investigation.",
+      "keyPoints": [
+        "File extension changes indicate active encryption.",
+        "Network isolation prevents lateral spread.",
+        "Memory capture preserves volatile evidence.",
+        "Communication protocols ensure coordinated response.",
+        "Recovery planning requires clean backup verification."
+      ]
+    },
+    "simulation": {
+      "aiTutorPersona": "Emergency response coordinator managing active ransomware incident.",
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Identify ransomware indicators (file extensions, notes).",
+          "expectedAction": "Student recognizes encrypted file extensions and ransom notes.",
+          "successMessage": "Correct identification. These are classic ransomware signatures.",
+          "hint": "Look for .encrypted, .locked extensions and README files."
+        },
+        {
+          "stepNumber": 2,
+          "instruction": "Isolate infected machine from network.",
+          "expectedAction": "Student disconnects network cable or disables network adapter.",
+          "successMessage": "Critical action completed. Network isolation prevents spread.",
+          "hint": "Physical disconnection is faster than software-based isolation."
+        },
+        {
+          "stepNumber": 3,
+          "instruction": "Disable shared folders and block lateral movement.",
+          "expectedAction": "Student disables file shares and monitors network traffic.",
+          "successMessage": "Good containment. This protects other network resources.",
+          "hint": "Check for active SMB connections and shared drives."
+        },
+        {
+          "stepNumber": 4,
+          "instruction": "Capture memory and disk forensics.",
+          "expectedAction": "Student creates memory dump and disk image.",
+          "successMessage": "Forensic evidence preserved. This aids investigation.",
+          "hint": "Memory contains encryption keys and process information."
+        },
+        {
+          "stepNumber": 5,
+          "instruction": "Prepare management report with recovery options.",
+          "expectedAction": "Student documents incident and recovery recommendations.",
+          "successMessage": "Complete incident response. Management can make informed decisions.",
+          "hint": "Include impact assessment, recovery time estimates, and costs."
+        }
+      ]
+    },
+    "questions": [
+      { "q": "What was the first indicator of ransomware?", "a": "Files with unusual extensions and ransom note appearance." },
+      { "q": "Why is immediate isolation critical?", "a": "Prevents ransomware from spreading to other network systems." },
+      { "q": "What forensic artifact helps identify the ransomware family?", "a": "Memory dumps containing encryption processes and network connections." },
+      { "q": "What communication steps must IR teams follow?", "a": "Notify management, legal, and potentially law enforcement." },
+      { "q": "What is the safest recovery method?", "a": "Restore from verified clean backups after system rebuild." }
+    ]
+  },
+  {
+    "labId": "I003",
+    "title": "SQL Injection Attack Investigation",
+    "difficulty": "medium",
+    "category": "incident_response",
+    "description": "SQL Injection attacks target poorly secured input fields. This lab teaches log analysis, exploitation pattern detection, and remediation steps.",
+    "theoryContent": {
+      "summary": "SQL injection exploits unsanitized input to manipulate database queries. Detection requires web log analysis and database audit review.",
+      "keyPoints": [
+        "Malicious SQL patterns appear in web access logs.",
+        "Database logs show unauthorized query execution.",
+        "Input validation failures enable injection attacks.",
+        "Immediate patching prevents further exploitation.",
+        "Long-term fixes require secure coding practices."
+      ]
+    },
+    "simulation": {
+      "aiTutorPersona": "Database security analyst investigating web application compromise.",
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Identify suspicious query anomalies.",
+          "expectedAction": "Student finds SQL injection patterns in database logs.",
+          "successMessage": "Correct. These queries show clear injection attempts.",
+          "hint": "Look for UNION, OR 1=1, and comment sequences in queries."
+        },
+        {
+          "stepNumber": 2,
+          "instruction": "Correlate timestamps with web access logs.",
+          "expectedAction": "Student matches database queries with HTTP requests.",
+          "successMessage": "Good correlation. This confirms the attack vector.",
+          "hint": "Match query execution time with web request timestamps."
+        },
+        {
+          "stepNumber": 3,
+          "instruction": "Validate compromise scope.",
+          "expectedAction": "Student determines which tables were accessed.",
+          "successMessage": "Scope assessment complete. This guides notification requirements.",
+          "hint": "Check which tables the malicious queries targeted."
+        },
+        {
+          "stepNumber": 4,
+          "instruction": "Recommend immediate patching actions.",
+          "expectedAction": "Student proposes input sanitization and parameterized queries.",
+          "successMessage": "Correct remediation. This prevents similar attacks.",
+          "hint": "Focus on input validation and prepared statements."
+        },
+        {
+          "stepNumber": 5,
+          "instruction": "Document long-term prevention measures.",
+          "expectedAction": "Student creates security improvement plan.",
+          "successMessage": "Comprehensive response. This strengthens overall security.",
+          "hint": "Include code review, testing, and security training."
+        }
+      ]
+    },
+    "questions": [
+      { "q": "What indicated SQL injection activity?", "a": "Malicious SQL patterns in database query logs and web requests." },
+      { "q": "What tables were most at risk?", "a": "User authentication and sensitive data tables accessed by the application." },
+      { "q": "What mistake allowed the attack?", "a": "Lack of input validation and use of dynamic SQL queries." },
+      { "q": "What immediate mitigation was applied?", "a": "Input sanitization and parameterized query implementation." },
+      { "q": "What long-term fix prevents recurrence?", "a": "Secure coding practices, regular security testing, and developer training." }
+    ]
+  },
+  {
+    "labId": "I004",
+    "title": "Brute-Force Attack Detection & Blocking",
+    "difficulty": "medium",
+    "category": "incident_response",
+    "description": "Brute-force attacks rely on repeated login attempts. Detection requires log correlation, threshold alerts, and automated blocking.",
+    "theoryContent": {
+      "summary": "Brute-force attacks attempt to guess credentials through repeated login attempts. Automated detection and response are essential.",
+      "keyPoints": [
+        "Authentication logs reveal attack patterns.",
+        "Rate limiting prevents rapid-fire attempts.",
+        "IP-based blocking stops persistent attackers.",
+        "Account lockout policies protect high-value targets.",
+        "Monitoring alerts enable rapid response."
+      ]
+    },
+    "simulation": {
+      "aiTutorPersona": "Security operations analyst responding to authentication attack.",
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Analyze authentication failure logs.",
+          "expectedAction": "Student identifies pattern of repeated failed logins.",
+          "successMessage": "Pattern recognized. This indicates systematic attack.",
+          "hint": "Look for high frequency failures from single source."
+        },
+        {
+          "stepNumber": 2,
+          "instruction": "Identify repeated attempts from same IP.",
+          "expectedAction": "Student correlates failures by source IP address.",
+          "successMessage": "Source identified. This confirms coordinated attack.",
+          "hint": "Group authentication events by source IP and time."
+        },
+        {
+          "stepNumber": 3,
+          "instruction": "Implement temporary IP block.",
+          "expectedAction": "Student configures firewall rule to block attacker IP.",
+          "successMessage": "Attack blocked. This stops immediate threat.",
+          "hint": "Use firewall or intrusion prevention system for blocking."
+        },
+        {
+          "stepNumber": 4,
+          "instruction": "Enforce stronger password rules.",
+          "expectedAction": "Student recommends password policy improvements.",
+          "successMessage": "Policy strengthened. This reduces future attack success.",
+          "hint": "Consider complexity requirements and account lockout thresholds."
+        },
+        {
+          "stepNumber": 5,
+          "instruction": "Produce IR analysis report.",
+          "expectedAction": "Student documents attack details and response actions.",
+          "successMessage": "Documentation complete. This supports security improvements.",
+          "hint": "Include attack timeline, impact, and prevention recommendations."
+        }
+      ]
+    },
+    "questions": [
+      { "q": "What pattern confirmed brute-force activity?", "a": "High frequency authentication failures from single IP address." },
+      { "q": "Why is rate limiting important?", "a": "It slows down automated attacks and reduces system load." },
+      { "q": "Which account types are high-risk?", "a": "Administrative accounts and service accounts with elevated privileges." },
+      { "q": "What remediation was implemented?", "a": "IP blocking, account lockout policies, and stronger password requirements." },
+      { "q": "What follow-up measures strengthen security?", "a": "Multi-factor authentication and continuous monitoring." }
+    ]
+  },
+  {
+    "labId": "I005",
+    "title": "Unauthorized Device Detection on Network",
+    "difficulty": "medium",
+    "category": "incident_response",
+    "description": "Unknown devices on institutional networks could lead to data breaches or network sniffing.",
+    "theoryContent": {
+      "summary": "Unauthorized devices pose significant security risks through data exfiltration, network reconnaissance, and lateral movement.",
+      "keyPoints": [
+        "MAC address monitoring detects new devices.",
+        "Device fingerprinting reveals device types.",
+        "Network segmentation limits unauthorized access.",
+        "Traffic analysis shows suspicious behavior.",
+        "Asset management prevents unauthorized connections."
+      ]
+    },
+    "simulation": {
+      "aiTutorPersona": "Network security analyst investigating unauthorized device access.",
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Scan network for unknown MAC addresses.",
+          "expectedAction": "Student identifies unregistered MAC address on network.",
+          "successMessage": "Unknown device detected. This requires investigation.",
+          "hint": "Compare current MAC addresses with asset inventory."
+        },
+        {
+          "stepNumber": 2,
+          "instruction": "Check device fingerprint & vendor.",
+          "expectedAction": "Student identifies device manufacturer and type.",
+          "successMessage": "Device identified. This helps assess threat level.",
+          "hint": "Use OUI lookup to identify manufacturer from MAC address."
+        },
+        {
+          "stepNumber": 3,
+          "instruction": "Attempt ping & port enumeration.",
+          "expectedAction": "Student scans device for open ports and services.",
+          "successMessage": "Device profiled. This reveals potential attack surface.",
+          "hint": "Use network scanning tools to identify running services."
+        },
+        {
+          "stepNumber": 4,
+          "instruction": "Block device at switch level.",
+          "expectedAction": "Student disables switch port or implements MAC filtering.",
+          "successMessage": "Device blocked. This prevents further unauthorized access.",
+          "hint": "Use switch management interface to disable port."
+        },
+        {
+          "stepNumber": 5,
+          "instruction": "Prepare network security summary.",
+          "expectedAction": "Student documents incident and recommends policy changes.",
+          "successMessage": "Incident documented. This improves future security.",
+          "hint": "Include device details, actions taken, and prevention measures."
+        }
+      ]
+    },
+    "questions": [
+      { "q": "How was the unauthorized device detected?", "a": "Unknown MAC address appeared in network monitoring systems." },
+      { "q": "What traffic behavior raised suspicion?", "a": "Unusual network scanning or data transfer patterns." },
+      { "q": "What containment step is mandatory?", "a": "Immediate isolation of the unauthorized device from the network." },
+      { "q": "Why control VLAN segmentation?", "a": "To limit unauthorized device access to sensitive network segments." },
+      { "q": "What preventive policy is recommended?", "a": "Network access control (NAC) and device registration requirements." }
+    ]
+  },
+  {
+    "labId": "I006",
+    "title": "Email Server Compromise Investigation",
+    "difficulty": "medium",
+    "category": "incident_response",
+    "description": "Email server compromise requires log analysis, header inspection, and determination of unauthorized relay activity.",
+    "theoryContent": {
+      "summary": "Email server compromises enable spam distribution, data exfiltration, and further network penetration through credential theft.",
+      "keyPoints": [
+        "SMTP logs reveal unauthorized relay usage.",
+        "Email headers contain routing and authentication data.",
+        "Compromised accounts show abnormal sending patterns.",
+        "Immediate credential reset prevents further abuse.",
+        "Mail server hardening prevents future compromises."
+      ]
+    },
+    "simulation": {
+      "aiTutorPersona": "Email security specialist investigating server compromise.",
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Analyze mail server logs.",
+          "expectedAction": "Student identifies unusual outbound email volume.",
+          "successMessage": "Anomaly detected. This indicates potential compromise.",
+          "hint": "Look for sudden spikes in outbound email volume."
+        },
+        {
+          "stepNumber": 2,
+          "instruction": "Check unauthorized SMTP relay usage.",
+          "expectedAction": "Student finds external relay attempts in logs.",
+          "successMessage": "Relay abuse confirmed. This explains the spam reports.",
+          "hint": "Check for relay attempts from external IP addresses."
+        },
+        {
+          "stepNumber": 3,
+          "instruction": "Inspect email header anomalies.",
+          "expectedAction": "Student analyzes suspicious email headers.",
+          "successMessage": "Headers analyzed. This reveals the attack method.",
+          "hint": "Look for authentication failures and routing anomalies."
+        },
+        {
+          "stepNumber": 4,
+          "instruction": "Disable compromised accounts.",
+          "expectedAction": "Student disables affected user accounts.",
+          "successMessage": "Accounts secured. This stops ongoing abuse.",
+          "hint": "Reset passwords and revoke authentication tokens."
+        },
+        {
+          "stepNumber": 5,
+          "instruction": "Document findings.",
+          "expectedAction": "Student creates comprehensive incident report.",
+          "successMessage": "Investigation complete. This guides remediation efforts.",
+          "hint": "Include timeline, affected accounts, and security improvements."
+        }
+      ]
+    },
+    "questions": [
+      { "q": "What indicated an account compromise?", "a": "Unusual outbound email volume and external relay attempts." },
+      { "q": "How did relay misuse happen?", "a": "Compromised credentials allowed unauthorized SMTP access." },
+      { "q": "What steps prevent bulk spam waves?", "a": "Rate limiting, authentication requirements, and monitoring." },
+      { "q": "Which accounts were high-value targets?", "a": "Administrative accounts and accounts with external email privileges." },
+      { "q": "What remediation was recommended?", "a": "Password resets, MFA implementation, and server hardening." }
+    ]
+  },
+  {
+    "labId": "I007",
+    "title": "Insider Threat Case Handling",
+    "difficulty": "high",
+    "category": "incident_response",
+    "description": "Insider threats involve misuse of legitimate access. Handling requires privacy, confidentiality, and careful evidence preservation.",
+    "theoryContent": {
+      "summary": "Insider threats are among the most dangerous security risks, requiring careful investigation while maintaining legal and ethical standards.",
+      "keyPoints": [
+        "Legitimate access complicates detection.",
+        "Behavioral analysis reveals abnormal patterns.",
+        "Evidence preservation requires legal compliance.",
+        "Confidentiality protects investigation integrity.",
+        "HR coordination ensures proper procedures."
+      ]
+    },
+    "simulation": {
+      "aiTutorPersona": "Senior security investigator handling sensitive insider threat case.",
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Analyze abnormal access usage.",
+          "expectedAction": "Student identifies unusual data access patterns.",
+          "successMessage": "Pattern identified. This warrants further investigation.",
+          "hint": "Look for access outside normal work hours or job responsibilities."
+        },
+        {
+          "stepNumber": 2,
+          "instruction": "Review privileged actions.",
+          "expectedAction": "Student examines administrative actions and data exports.",
+          "successMessage": "Privileged activity reviewed. This shows scope of potential breach.",
+          "hint": "Focus on data export, user creation, and permission changes."
+        },
+        {
+          "stepNumber": 3,
+          "instruction": "Document suspicious behavior timeline.",
+          "expectedAction": "Student creates chronological evidence timeline.",
+          "successMessage": "Timeline established. This supports investigation findings.",
+          "hint": "Include all relevant system access and data handling events."
+        },
+        {
+          "stepNumber": 4,
+          "instruction": "Secure sensitive logs and evidence.",
+          "expectedAction": "Student preserves evidence with proper chain of custody.",
+          "successMessage": "Evidence secured. This maintains legal admissibility.",
+          "hint": "Use forensic procedures and document all evidence handling."
+        },
+        {
+          "stepNumber": 5,
+          "instruction": "Prepare high-level report.",
+          "expectedAction": "Student creates executive summary for management.",
+          "successMessage": "Report prepared. This enables informed decision-making.",
+          "hint": "Include findings, impact assessment, and recommended actions."
+        }
+      ]
+    },
+    "questions": [
+      { "q": "What abnormal pattern triggered investigation?", "a": "Unusual data access outside normal job responsibilities and work hours." },
+      { "q": "How do you validate intent vs mistake?", "a": "Analyze pattern frequency, data types accessed, and timing of activities." },
+      { "q": "Why is confidentiality critical?", "a": "Protects investigation integrity and prevents evidence tampering." },
+      { "q": "Which logs proved most important?", "a": "Data access logs, file transfer logs, and authentication records." },
+      { "q": "What governance steps should follow?", "a": "HR consultation, legal review, and policy enforcement procedures." }
+    ]
+  },
+  {
+    "labId": "I008",
+    "title": "Malware Beacon Detection (C2 Callback)",
+    "difficulty": "high",
+    "category": "incident_response",
+    "description": "Command-and-Control (C2) beacons indicate malware attempting communication with attacker servers.",
+    "theoryContent": {
+      "summary": "C2 beacons are periodic communications between infected systems and attacker infrastructure, enabling remote control and data exfiltration.",
+      "keyPoints": [
+        "Periodic network traffic indicates beacon activity.",
+        "Timing intervals help identify beacon patterns.",
+        "DNS queries may reveal C2 domains.",
+        "Network blocking disrupts attacker communication.",
+        "Endpoint analysis reveals malware presence."
+      ]
+    },
+    "simulation": {
+      "aiTutorPersona": "Malware analyst investigating advanced persistent threat.",
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Inspect network traffic logs.",
+          "expectedAction": "Student identifies periodic outbound connections.",
+          "successMessage": "Beacon pattern detected. This indicates active malware.",
+          "hint": "Look for regular intervals in outbound network connections."
+        },
+        {
+          "stepNumber": 2,
+          "instruction": "Identify periodic beacon patterns.",
+          "expectedAction": "Student calculates beacon interval timing.",
+          "successMessage": "Interval calculated. This confirms automated communication.",
+          "hint": "Measure time between similar outbound connections."
+        },
+        {
+          "stepNumber": 3,
+          "instruction": "Locate infected endpoint.",
+          "expectedAction": "Student traces beacon source to specific device.",
+          "successMessage": "Source identified. This enables targeted remediation.",
+          "hint": "Use network logs to identify originating IP address."
+        },
+        {
+          "stepNumber": 4,
+          "instruction": "Block outbound connection.",
+          "expectedAction": "Student implements firewall rule to block C2 traffic.",
+          "successMessage": "C2 blocked. This disrupts attacker communication.",
+          "hint": "Block destination IP and domain at network perimeter."
+        },
+        {
+          "stepNumber": 5,
+          "instruction": "Prepare threat intel summary.",
+          "expectedAction": "Student documents malware indicators and behavior.",
+          "successMessage": "Intelligence gathered. This aids future detection.",
+          "hint": "Include IOCs, TTPs, and recommended detection rules."
+        }
+      ]
+    },
+    "questions": [
+      { "q": "What pattern confirmed beacon behavior?", "a": "Regular periodic outbound connections to external IP address." },
+      { "q": "Why is timing interval important?", "a": "Consistent intervals indicate automated malware communication." },
+      { "q": "What tools detect C2 activity?", "a": "Network monitoring, DNS analysis, and endpoint detection systems." },
+      { "q": "What containment step was executed?", "a": "Blocking outbound connections to C2 infrastructure." },
+      { "q": "What long-term prevention measure applies?", "a": "Enhanced endpoint protection and network monitoring." }
+    ]
+  },
+  {
+    "labId": "I009",
+    "title": "Web Defacement Investigation",
+    "difficulty": "medium",
+    "category": "incident_response",
+    "description": "Website defacement typically indicates a compromised CMS or leaked admin credentials.",
+    "theoryContent": {
+      "summary": "Web defacement attacks compromise website integrity through various attack vectors including credential theft and application vulnerabilities.",
+      "keyPoints": [
+        "File modification timestamps reveal attack timing.",
+        "Web server logs show attack vectors.",
+        "CMS vulnerabilities enable unauthorized access.",
+        "Backup restoration requires clean baseline verification.",
+        "Security hardening prevents future attacks."
+      ]
+    },
+    "simulation": {
+      "aiTutorPersona": "Web security analyst investigating site compromise.",
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Identify defaced webpage elements.",
+          "expectedAction": "Student analyzes modified HTML content.",
+          "successMessage": "Defacement confirmed. This shows attacker access level.",
+          "hint": "Compare current content with known good backup."
+        },
+        {
+          "stepNumber": 2,
+          "instruction": "Inspect file modification timelines.",
+          "expectedAction": "Student checks file timestamps for attack timing.",
+          "successMessage": "Timeline established. This narrows investigation scope.",
+          "hint": "Use file system timestamps to identify modification sequence."
+        },
+        {
+          "stepNumber": 3,
+          "instruction": "Check admin login logs.",
+          "expectedAction": "Student reviews authentication logs for unauthorized access.",
+          "successMessage": "Access method identified. This reveals attack vector.",
+          "hint": "Look for successful logins around defacement time."
+        },
+        {
+          "stepNumber": 4,
+          "instruction": "Restore from clean backup.",
+          "expectedAction": "Student restores website from verified clean backup.",
+          "successMessage": "Site restored. This returns service to normal operation.",
+          "hint": "Verify backup integrity before restoration."
+        },
+        {
+          "stepNumber": 5,
+          "instruction": "Patch vulnerabilities.",
+          "expectedAction": "Student implements security updates and hardening.",
+          "successMessage": "Security improved. This prevents similar attacks.",
+          "hint": "Update CMS, plugins, and implement security controls."
+        }
+      ]
+    },
+    "questions": [
+      { "q": "How was the defacement executed?", "a": "Through compromised admin credentials or CMS vulnerability exploitation." },
+      { "q": "Which logs traced attacker entry?", "a": "Web server access logs and CMS authentication logs." },
+      { "q": "What vulnerability was exploited?", "a": "Outdated CMS version with known security flaws." },
+      { "q": "What restoration step was applied?", "a": "Clean backup restoration after vulnerability patching." },
+      { "q": "What policies prevent recurrence?", "a": "Regular updates, strong authentication, and security monitoring." }
+    ]
+  },
+  {
+    "labId": "I010",
+    "title": "Network DoS Attack Response",
+    "difficulty": "medium",
+    "category": "incident_response",
+    "description": "Denial-of-Service attacks overload network resources. Quick detection and traffic shaping are key.",
+    "theoryContent": {
+      "summary": "DoS attacks overwhelm network infrastructure through traffic flooding, requiring rapid detection and mitigation to maintain service availability.",
+      "keyPoints": [
+        "Bandwidth monitoring detects traffic anomalies.",
+        "Attack classification guides response strategy.",
+        "Traffic filtering mitigates attack impact.",
+        "ISP coordination helps with large-scale attacks.",
+        "Incident documentation supports future planning."
+      ]
+    },
+    "simulation": {
+      "aiTutorPersona": "Network operations analyst responding to service disruption.",
+      "steps": [
+        {
+          "stepNumber": 1,
+          "instruction": "Analyze bandwidth spikes.",
+          "expectedAction": "Student identifies abnormal traffic volume increases.",
+          "successMessage": "Traffic spike confirmed. This indicates potential DoS attack.",
+          "hint": "Compare current traffic levels with baseline measurements."
+        },
+        {
+          "stepNumber": 2,
+          "instruction": "Detect single-source or distributed origin.",
+          "expectedAction": "Student classifies attack as DoS or DDoS based on source analysis.",
+          "successMessage": "Attack classified. This determines appropriate response strategy.",
+          "hint": "Analyze source IP distribution in traffic logs."
+        },
+        {
+          "stepNumber": 3,
+          "instruction": "Implement temporary traffic filtering.",
+          "expectedAction": "Student configures rate limiting and traffic blocking rules.",
+          "successMessage": "Filtering applied. This reduces attack impact on services.",
+          "hint": "Use firewall rules and rate limiting to control traffic flow."
+        },
+        {
+          "stepNumber": 4,
+          "instruction": "Notify ISP if needed.",
+          "expectedAction": "Student contacts ISP for upstream filtering assistance.",
+          "successMessage": "ISP notified. This enables upstream mitigation for large attacks.",
+          "hint": "Large-scale DDoS attacks require ISP-level filtering."
+        },
+        {
+          "stepNumber": 5,
+          "instruction": "Document incident metrics.",
+          "expectedAction": "Student records attack details and response effectiveness.",
+          "successMessage": "Incident documented. This improves future response capabilities.",
+          "hint": "Include attack duration, peak traffic, and mitigation effectiveness."
+        }
+      ]
+    },
+    "questions": [
+      { "q": "What metric confirmed the DoS attack?", "a": "Sudden bandwidth spike exceeding normal traffic patterns." },
+      { "q": "How did you classify the attack type?", "a": "By analyzing source IP distribution and traffic characteristics." },
+      { "q": "What mitigation step reduced damage?", "a": "Traffic filtering and rate limiting implementation." },
+      { "q": "Why notify ISP during large attacks?", "a": "ISPs can provide upstream filtering for volumetric attacks." },
+      { "q": "What long-term improvements apply?", "a": "DDoS protection services and improved monitoring capabilities." }
+    ]
+  }
+]

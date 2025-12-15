@@ -1,0 +1,39 @@
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
+import { APP_GUARD } from '@nestjs/core';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+import { AppConfigModule } from './config/config.module';
+import { DatabaseModule } from './database/database.module';
+import { HealthModule } from './health/health.module';
+import { AuthModule } from './auth/auth.module';
+import { UsersModule } from './users/users.module';
+import { LabsModule } from './labs/labs.module';
+import { ReportsModule } from './reports/reports.module';
+import { NotificationsModule } from './notifications/notifications.module';
+import { LoggingMiddleware } from './common/middleware/logging.middleware';
+import { JwtAuthGuardWithPublic } from './auth/guards/public.guard';
+
+@Module({
+  imports: [
+    AppConfigModule,
+    DatabaseModule,
+    HealthModule,
+    AuthModule,
+    UsersModule,
+    LabsModule,
+    NotificationsModule,
+  ],
+  controllers: [AppController],
+  providers: [
+    AppService,
+    {
+      provide: APP_GUARD,
+      useClass: JwtAuthGuardWithPublic,
+    },
+  ],
+})
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(LoggingMiddleware).forRoutes('*');
+  }
+}
