@@ -1,3 +1,8 @@
 export declare class AppService {
-    getHello(): string;
+    getHello(): {
+        status: string;
+        service: string;
+        environment: string;
+        timestamp: string;
+    };
 }

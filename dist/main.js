@@ -18,18 +18,24 @@ async function bootstrap() {
     app.useGlobalFilters(new global_exception_filter_1.GlobalExceptionFilter());
     app.useGlobalInterceptors(new transform_response_interceptor_1.TransformResponseInterceptor());
     app.enableCors({
-        origin: configService.isDevelopment ? '*' : [],
+        origin: configService.isDevelopment
+            ? '*'
+            : [
+                'https://cyberedu.netlify.app',
+            ],
         credentials: true,
+        methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+        allowedHeaders: ['Content-Type', 'Authorization'],
     });
-    const port = configService.port;
+    const port = process.env.PORT || configService.port;
     await app.listen(port);
     console.log(`
   🚀 CyberEdu Backend Started
   ----------------------------------
   ✅ Environment: ${configService.nodeEnv}
-  ✅ API: http://localhost:${port}${configService.apiPrefix}
-  ✅ Health: http://localhost:${port}${configService.apiPrefix}/health
-  ✅ Database: ${configService.database.uri}
+  ✅ API Prefix: ${configService.apiPrefix}
+  ✅ Port: ${port}
+  ✅ Database Connected
   ✅ Authentication: JWT System Ready
   ----------------------------------
   `);

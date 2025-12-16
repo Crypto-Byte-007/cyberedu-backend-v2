@@ -23,18 +23,24 @@ let LabsService = class LabsService {
     constructor(labModel) {
         this.labModel = labModel;
         this.allLabs = [];
-        this.loadLabs();
+    }
+    async onModuleInit() {
+        await this.loadLabs();
     }
     async loadLabs() {
         try {
-            const schoolLabsPath = path.join(__dirname, 'data', 'school-labs.json');
-            const institutionLabsPath = path.join(__dirname, 'data', 'institution-labs.json');
+            const basePath = path.join(process.cwd(), 'src', 'labs', 'data');
+            const schoolLabsPath = path.join(basePath, 'school-labs.json');
+            const institutionLabsPath = path.join(basePath, 'institution-labs.json');
+            if (!fs.existsSync(schoolLabsPath)) {
+                throw new Error(`Missing file: ${schoolLabsPath}`);
+            }
+            if (!fs.existsSync(institutionLabsPath)) {
+                throw new Error(`Missing file: ${institutionLabsPath}`);
+            }
             const schoolLabs = JSON.parse(fs.readFileSync(schoolLabsPath, 'utf8'));
             const institutionLabs = JSON.parse(fs.readFileSync(institutionLabsPath, 'utf8'));
-            this.allLabs = [
-                ...schoolLabs,
-                ...institutionLabs
-            ];
+            this.allLabs = [...schoolLabs, ...institutionLabs];
             for (const lab of this.allLabs) {
                 const exists = await this.labModel.findOne({ labId: lab.labId });
                 if (!exists) {
@@ -44,7 +50,7 @@ let LabsService = class LabsService {
             console.log(`✅ Labs loaded: ${this.allLabs.length}`);
         }
         catch (err) {
-            console.error('❌ Failed loading labs:', err);
+            console.error('❌ Failed loading labs:', err.message);
         }
     }
     async findAll() {
@@ -52,8 +58,9 @@ let LabsService = class LabsService {
     }
     async findOne(id) {
         const lab = await this.labModel.findOne({ labId: id }).lean();
-        if (!lab)
+        if (!lab) {
             throw new common_1.NotFoundException('Lab not found');
+        }
         return lab;
     }
     async getTheory(id) {

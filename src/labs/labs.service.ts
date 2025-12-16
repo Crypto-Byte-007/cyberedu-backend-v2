@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException, OnModuleInit } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Lab, LabDocument } from './schemas/lab.schema';
@@ -6,29 +6,50 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 @Injectable()
-export class LabsService {
+export class LabsService implements OnModuleInit {
   private allLabs: any[] = [];
 
   constructor(
     @InjectModel(Lab.name)
     private readonly labModel: Model<LabDocument>,
-  ) {
-    this.loadLabs();
+  ) {}
+
+  // ✅ Correct lifecycle hook (DO NOT load in constructor)
+  async onModuleInit() {
+    await this.loadLabs();
   }
 
   // Load all labs at startup
   private async loadLabs() {
     try {
-      const schoolLabsPath = path.join(__dirname, 'data', 'school-labs.json');
-      const institutionLabsPath = path.join(__dirname, 'data', 'institution-labs.json');
-      
-      const schoolLabs = JSON.parse(fs.readFileSync(schoolLabsPath, 'utf8'));
-      const institutionLabs = JSON.parse(fs.readFileSync(institutionLabsPath, 'utf8'));
-      
-      this.allLabs = [
-        ...schoolLabs,
-        ...institutionLabs
-      ];
+      // ✅ SAFE PATH: works in dev, prod, docker, windows
+      const basePath = path.join(
+        process.cwd(),
+        'src',
+        'labs',
+        'data',
+      );
+
+      const schoolLabsPath = path.join(basePath, 'school-labs.json');
+      const institutionLabsPath = path.join(basePath, 'institution-labs.json');
+
+      if (!fs.existsSync(schoolLabsPath)) {
+        throw new Error(`Missing file: ${schoolLabsPath}`);
+      }
+
+      if (!fs.existsSync(institutionLabsPath)) {
+        throw new Error(`Missing file: ${institutionLabsPath}`);
+      }
+
+      const schoolLabs = JSON.parse(
+        fs.readFileSync(schoolLabsPath, 'utf8'),
+      );
+
+      const institutionLabs = JSON.parse(
+        fs.readFileSync(institutionLabsPath, 'utf8'),
+      );
+
+      this.allLabs = [...schoolLabs, ...institutionLabs];
 
       for (const lab of this.allLabs) {
         const exists = await this.labModel.findOne({ labId: lab.labId });
@@ -38,8 +59,8 @@ export class LabsService {
       }
 
       console.log(`✅ Labs loaded: ${this.allLabs.length}`);
-    } catch (err) {
-      console.error('❌ Failed loading labs:', err);
+    } catch (err: any) {
+      console.error('❌ Failed loading labs:', err.message);
     }
   }
 
@@ -49,7 +70,9 @@ export class LabsService {
 
   async findOne(id: string) {
     const lab = await this.labModel.findOne({ labId: id }).lean();
-    if (!lab) throw new NotFoundException('Lab not found');
+    if (!lab) {
+      throw new NotFoundException('Lab not found');
+    }
     return lab;
   }
 
