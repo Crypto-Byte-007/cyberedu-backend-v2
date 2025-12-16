@@ -3,46 +3,40 @@ import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class AppConfigService {
-  constructor(private configService: ConfigService) {}
+  constructor(private readonly configService: ConfigService) {}
 
   get nodeEnv(): string {
-    return this.configService.get<string>('nodeEnv', 'development');
+    return this.configService.get<string>('NODE_ENV', 'development');
   }
 
   get port(): number {
-    return this.configService.get<number>('port', 3000);
+    return Number(this.configService.get<number>('PORT', 3000));
   }
 
   get apiPrefix(): string {
-    return this.configService.get<string>('apiPrefix', '/api/v1');
+    return this.configService.get<string>('API_PREFIX', '/api/v1');
   }
 
   get isDevelopment(): boolean {
-    return this.nodeEnv === 'development';
-  }
-
-  get isProduction(): boolean {
-    return this.nodeEnv === 'production';
+    return this.nodeEnv !== 'production';
   }
 
   get database() {
+    const uri = this.configService.get<string>('MONGO_URI');
+
+    if (!uri) {
+      throw new Error('❌ MONGO_URI is not defined');
+    }
+
     return {
-      uri: this.configService.get<string>('database.uri', 'mongodb://localhost:27017/cyberedu'),
-      testUri: this.configService.get<string>('database.testUri', 'mongodb://localhost:27017/cyberedu_test'),
+      uri,
     };
   }
 
   get jwt() {
     return {
-      secret: this.configService.get<string>('jwt.secret', 'change_this_in_production'),
-      expiration: this.configService.get<string>('jwt.expiration', '24h'),
-    };
-  }
-
-  get logging() {
-    return {
-      level: this.configService.get<string>('logging.level', 'info'),
-      logToFile: this.configService.get<boolean>('logging.logToFile', false),
+      secret: this.configService.get<string>('JWT_SECRET', 'change_this'),
+      expiration: this.configService.get<string>('JWT_EXPIRATION', '24h'),
     };
   }
 }
