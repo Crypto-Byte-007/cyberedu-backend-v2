@@ -1,6 +1,7 @@
 ﻿import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+
 import { AppConfigModule } from './config/config.module';
 import { DatabaseModule } from './database/database.module';
 import { HealthModule } from './health/health.module';
@@ -10,12 +11,18 @@ import { LabsModule } from './labs/labs.module';
 import { ReportsModule } from './reports/reports.module';
 import { NotificationsModule } from './notifications/notifications.module';
 import { UploadsModule } from './uploads/uploads.module';
+
 import { LoggingMiddleware } from './common/middleware/logging.middleware';
 
 @Module({
   imports: [
+    // Global configuration (env, app settings)
     AppConfigModule,
+
+    // MongoDB connection (uses MONGO_URI from environment)
     DatabaseModule,
+
+    // Core modules
     HealthModule,
     AuthModule,
     UsersModule,
